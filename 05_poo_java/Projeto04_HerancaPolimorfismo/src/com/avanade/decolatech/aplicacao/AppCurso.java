@@ -5,16 +5,16 @@ import com.avanade.decolatech.classes.Curso;
 public class AppCurso {
 	public static void main(String[] args) {
 		Curso curso1 = new Curso();
-		curso1.codigo = 100;
-		curso1.descricao = "Inteligencia Artificial";
-		curso1.ch = 120;
-		curso1.preco = 4000;
+		curso1.setCodigo(100);
+		curso1.setDescricao("Inteligencia Artificial");
+		curso1.setCh(120);
+		curso1.setPreco(4000);
 		
 		var curso2 = new Curso();
-		curso1.codigo = 200;
-		curso1.descricao = "Culinaria Básica";
-		curso1.ch = 8;
-		curso1.preco = 0;
+		curso1.setCodigo(200);
+		curso1.setDescricao("Culinária Básica");
+		curso1.setCh(8);
+		curso1.setPreco(0);
 		
 		curso2 = null;
 		

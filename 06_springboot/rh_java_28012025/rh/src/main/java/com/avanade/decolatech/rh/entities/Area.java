@@ -10,27 +10,30 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
-@Entity(name = "tb_areas") // o entity exige a presença de uma chave primária
-//@Table(name = "tb_areas")
+@Entity
+@Table(name = "TB_AREAS")
 public class Area {
+
 	@Id
+	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "descricao")
+	@Column(name = "DESCRICAO")
 	private String descricao;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "area")
 	private List<Cargo> cargos;
 	
-	public Area() {}
+	public Area() { }
 	
 	public Area(int id, String descricao) {
 		this.setId(id);
 		this.setDescricao(descricao);
 	}
+	
 
 	public int getId() {
 		return id;
@@ -55,4 +58,6 @@ public class Area {
 	public void setCargos(List<Cargo> cargos) {
 		this.cargos = cargos;
 	}
+	
+	
 }

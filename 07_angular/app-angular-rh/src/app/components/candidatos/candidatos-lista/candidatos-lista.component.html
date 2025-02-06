@@ -1,0 +1,25 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Cpf</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of candidatos">
+            <td>{{c.cpf}}</td>
+            <td>{{c.nome}}</td>
+            <td>{{c.telefone}}</td>
+            <td>{{c.email}}</td>
+            <td>
+                <a routerLink="/candidatos/alteracao/{{c.cpf}}"><i class="bi bi-pencil-square"></i>Editar</a> |
+                <a routerLink="/candidatos/remocao/{{c.cpf}}"><i class="bi bi-trash-fill"></i>Apagar</a> |
+                <a routerLink="/inscricoes/candidato/{{c.cpf}}"><i class="bi bi-eye"></i>Visualizar</a>
+
+            </td>
+        </tr>
+    </tbody>
+</table>

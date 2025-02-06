@@ -11,32 +11,37 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_candidatos")
+@Table(name = "TB_CANDIDATOS")
 public class Candidato {
+
 	@Id
-	@Column(name = "cpf")
+	@Column(name = "CPF")
 	private String cpf;
 	
-	@Column(name = "nome")
+	@Column(name = "NOME")
 	private String nome;
 	
-	@Column(name = "telefone")
+	@Column(name = "TELEFONE")
 	private String telefone;
 	
-	@Column(name = "email")
+	@Column(name = "EMAIL")
 	private String email;
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "candidato")
-	private List<Inscricao> inscricoes;
-
-	public Candidato() {}
 	
-	public Candidato(String cpf, String nome, String telefone, String email){
+	public Candidato() {
+
+	}
+	
+	public Candidato(String cpf, String nome, String telefone, String email) {
+
 		this.setCpf(cpf);
 		this.setNome(nome);
 		this.setTelefone(telefone);
 		this.setEmail(email);
+		
 	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "candidato")
+	private List<Inscricao> inscricoes;
 
 	public String getCpf() {
 		return cpf;
@@ -77,4 +82,6 @@ public class Candidato {
 	public void setInscricoes(List<Inscricao> inscricoes) {
 		this.inscricoes = inscricoes;
 	}
+	
+	
 }

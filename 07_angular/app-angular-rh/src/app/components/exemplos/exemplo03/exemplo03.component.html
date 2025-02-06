@@ -1,0 +1,21 @@
+<h3>Exemplo 03 - Diretiva ngFor e pipes |</h3>
+<p>pipes são elementos que permitem modificar o resultado no html</p>
+<div class="alert alert-primary">
+    <div class="mb-3">
+        <input #conteudo type="text" class="form-control" placeholder="Pesquisar" (keyup)="0" />
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pessoa of pessoas | filtro:conteudo.value">
+                <td>{{pessoa.nome | uppercase | tamanho}}</td>
+                <td>{{pessoa.idade}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

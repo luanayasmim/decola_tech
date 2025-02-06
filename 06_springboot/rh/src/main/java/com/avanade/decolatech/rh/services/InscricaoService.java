@@ -58,6 +58,6 @@ public class InscricaoService {
 
 		inscricaoRepository.save(inscricao);
 
-		return "Inscricao efetuada com sucesso";
+		return "Inscricao do candidato "+candidato.getNome()+" efetuada com sucesso";
 	}
 }

@@ -10,40 +10,43 @@ import com.avanade.decolatech.rh.repositories.CandidatoRepository;
 
 @Service
 public class CandidatoService {
-	
-	//Injeção de dependencia
+
 	@Autowired
 	private CandidatoRepository candidatoRepository;
-
-	//função para buscar um candidato pelo cpf
-	public Candidato buscarCandidato(String cpf){
-		var candidato = candidatoRepository.getReferenceById(cpf);
-
-		return new Candidato(candidato.getCpf(), candidato.getNome(), candidato.getTelefone(), candidato.getEmail());
-	}
-
-	// função para listar todos os candidatos com base nas definições padrão do spring data JPA
+	
+	// método para listar todos os candidatos com base nas definições padrão do Spring Data JPA
 	public List<Candidato> listarCandidatos() {
-		return candidatoRepository.findAll();
+		return candidatoRepository.findAll();		
 	}
 	
-	//função para incluir ou alterar um candidato
+	// método para incluir ou alterar um candidato
 	public Candidato incluirCandidato(Candidato candidato) {
+
 		return candidatoRepository.save(candidato);
 	}
-
-	public Candidato alterarCandidato(Candidato candidato, String cpf){
-		candidato.setCpf(cpf);
-		return  candidatoRepository.save(candidato);
+	
+	// método para buscar um candidato pelo CPF
+	public Candidato buscarCandidato(String cpf) {
+		Candidato candidato = candidatoRepository.getReferenceById(cpf);
+		return new Candidato(
+				candidato.getCpf(), 
+				candidato.getNome(), 
+				candidato.getTelefone(), 
+				candidato.getEmail());		
 	}
-
-	public String removerCandidato(String cpf){
+	
+	public Candidato alterarCandidato(Candidato candidato, String cpf) {
+		candidato.setCpf(cpf);
+		return candidatoRepository.save(candidato);		
+	}
+	
+	public String removerCandidato(String cpf) {
 		try {
 			candidatoRepository.deleteById(cpf);
 			return "Candidato removido!";
-		}catch (Exception e){
+		} catch (Exception e) {
 			return e.toString();
+			
 		}
 	}
-
 }

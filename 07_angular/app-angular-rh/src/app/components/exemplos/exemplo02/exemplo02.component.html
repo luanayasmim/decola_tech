@@ -1,0 +1,13 @@
+<h3>Exemplo 02 - Diretivas ngFor e ngIf</h3>
+<div class="alert alert-primary">
+    <div class="mb-3">
+        <select #lista name="" id="" class="form-select" (change)="mostrar(lista.value)">
+            <option value="">Selecione</option>
+            <option *ngFor="let pessoa of pessoas" [value]="pessoa.nome">{{pessoa.nome}} - {{pessoa.idade}}</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <div *ngIf="nome">Pessoa selecionada: {{nome}}</div>
+    </div>
+</div>
